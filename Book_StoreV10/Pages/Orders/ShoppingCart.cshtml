@@ -1,0 +1,60 @@
+﻿@page
+@model Book_StoreV10.Pages.Orders.ShoppingCartModel
+@{
+}
+
+@{ ViewData["Title"] = "Shopping cart"; }
+
+<h1> Shopping Cart </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title </th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.orderItems.Count != 0)
+        {
+            @foreach (var item in Model.orderItems)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @item.Author
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        <img src="~/Books/@item.ImageName" width="80" height="70">
+                    </td>
+                    <td>
+                </tr>
+
+            }}
+    <tr>
+        <td>
+            Total
+        </td>
+        <td>
+        </td>
+        <td>
+            @Model.TotalPrice
+        </td>
+        <a asp-page="/Books/Allbooks" class="btn btn-success btn-group-lg pull-right">
+            Continue Shopping
+        </a>
+        <td>
+        </td>
+
+        <td>
+        </td>
+    </tr>
+    
+        
+    </tbody>
